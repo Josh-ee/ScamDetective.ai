@@ -1,0 +1,1 @@
+# ScamDetective.ai
