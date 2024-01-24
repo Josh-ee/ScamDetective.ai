@@ -150,8 +150,9 @@
 
             <div class="implementation-block">
                 <h3>Metrics&nbsp;for&nbsp;Comparison</h3>
-                <img src="css/media/confusion_matrix.jpg" alt="performance gain from data augmentation" class="implementation-image-right graph-img">
-                
+                <a href="https://glassboxmedicine.com/2019/02/17/measuring-performance-the-confusion-matrix/">
+                    <img src="css/media/confusion_matrix.jpg" alt="performance gain from data augmentation" class="implementation-image-right graph-img">
+                </a>
                 <p>While there are many ways to measure a classifier, we identified two metrics to prioritize: Accuracy and False Negatives (FN). We place the largest emphasis on Accuracy and FN because they are of the utmost importance when classifying scams. Since money could be on the line, we need to be accurate when we say a message is Safe (Ham) or Scam (Spam). However, miss-classifying a Safe message as “Scam” (False Positive) is significantly lower risk than miss-classifying a Scam as “Safe” (False Negative).
                     Therefore, for the model comparison, we will be looking for the highest accuracy, while maintaining the lowest number of False Negatives.</p>
 
