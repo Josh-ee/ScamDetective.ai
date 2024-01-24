@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScamDetective.ai</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    
+
+
+    <button id="toggleSidebar" class="toggle-sidebar">
+        <span class="hamburger-icon"></span>
+      </button>
+      
+
+    <nav class="sidebar" id="sidebar">
+        <a href="#v2" class="nav-logo">
+            <img src="css/media/sidebar.png" alt="Go to Demo" class="nav-image">
+        </a>
+        <ul>
+            <li><a href="#v2">&nbsp;Version 2</a></li>
+            <li><a href="#v1">&nbsp;Version 1</a></li>
+            <li><a href="#introduction">&nbsp;Introduction</a></li>
+            <li><a href="#design">&nbsp;Design</a></li>
+            <li><a href="#implementation">&nbsp;Implementation</a></li>
+            <li><a href="#results">&nbsp;Results</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+
+        <section class="content" id="v2">
+            <h2>Announcing ScamDetective.ai Version 2</h2>
+            <hr class="section-separator">
+            <div class="implementation-block">
+                
+                <a href="https://chat.openai.com/g/g-qCZfT0RUH-scamdetective-ai" target="_blank">
+                    <img src="css/media/v2_img.jpg" alt="GPT + ScamDetective" class="implementation-image-right">
+                </a>
+                
+                <h3>ScamDetective.ai is now a GPT! </h3>
+                <h4>Link: <a href='https://chat.openai.com/g/g-qCZfT0RUH-scamdetective-ai'>chat.openai.com/g/g-qCZfT0RUH-scamdetective-ai</a> </h4>
+                <p>Converting ScamDetective.ai from a website to a GPT:</p>
+                <ul>
+                    <li>Improved Generalizability and Robustness of the answers</li>
+                    <li>Educates users about scams through natural conversation</li>
+                </ul>
+            </div>
+        </section>
+
+
+
+        <section class="content" id="v1">
+            <h2>ScamDetective.ai v1 (Deprecated)</h2>
+            <hr class="section-separator">
+            <video height="720" controls class="large-image">
+                <source src="css/media/ScamDetective_v1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <hr class="section-separator">
+            <div class="text-container">
+                <h3>ScamDetective.ai v1 Story</h3>
+                <p>Originally, ScamDetective.ai was a project for a graduate AI class</p>
+                <p>Inspired by the project results, we turned the project into a full website</p>
+                <p>ScamDetective.ai v1 (video above) improved the AI in the project and combined it with empirical, rule-based analysis</p>
+                <p>Version 1 was deprecated. ScamDetective.ai v2 took the learnings and analysis from v1 and applied them to create a <a href="https://chat.openai.com/g/g-qCZfT0RUH-scamdetective-ai">GPT</a> in the <a href="https://openai.com/blog/introducing-gpts">OpenAI GPTs</a></p>
+                <p></p>
+                <h4>The rest of this webpage delves into the project that inspired ScamDetective.ai v1</h4>
+              </div>
+
+        </section>
+
+
+        <section class="content" id="introduction">
+            <h2>Introduction</h2>
+            <hr class="section-separator">
+            <p>Online scams are getting more prevalent and robust. The days of the Nigerian Prince are out and the new generation of scams have arrived.</p>
+            <p>“Newly released Federal Trade Commission data shows that consumers reported losing nearly <b>$8.8 billion to fraud</b> in 2022, an increase of more than 30 percent” - <a href="https://www.ftc.gov/news-events/news/press-releases/2023/02/new-ftc-data-show-consumers-reported-losing-nearly-88-billion-scams-2022"> FTC</a></p>
+            <h4>Our proposed solution is ScamDetective.ai, a website that utilizes the power of AI to mitigate the impact of scams </h4>
+            
+        </section>
+
+        <section class="content" id="design">
+            <h2>Design</h2>
+            <hr class="section-separator">
+            <p>For the original class project that became ScamDetective.ai v1 we designed our experiment as follows:</p>
+
+            <ol>
+                <li>Collect a vast amount of text data labeled safe or scam</li>
+                <li>Augment the data with synonyms to increase sample size and robustness</li>
+                <li>Test different classification models and evaluate best model</li>
+            </ol>
+    
+        </section>
+
+        <section class="content" id="implementation">
+            <h2>Implementation</h2>
+            <hr class="section-separator">
+
+            <div class="implementation-block">
+                <h3>Data Collection</h3>
+                <img src="css/media/data_example.jpg" alt="Kaggle Logo" class="implementation-image-left max-height-img">
+
+                
+                <ul>
+                    <li>Kaggle SMS Spam Dataset: <a href="https://www.kaggle.com/datasets/uciml/sms-spam-collection-dataset">kaggle.com/datasets/uciml/sms-spam-collection-dataset</a></li>
+                    <li>Portion of Kaggle Enron-Spam Dataset: <a href="https://www.kaggle.com/datasets/wanderfj/enron-spam">kaggle.com/datasets/wanderfj/enron-spam</a></li>
+                </ul>
+
+            </div>
+            
+            <hr class="section-separator">
+
+        
+            <div class="implementation-block">
+                
+                <img src="css/media/aug_graph.jpg" alt="performance gain from data augmentation" class="implementation-image-right graph-img">
+                <h3>Data&nbsp;Augmentation</h3>
+                <p>Data augmentation was performed on the entirety of our Spam Data</p>
+                <ul>
+                    <li>Augmentation achieved through <a href="https://nlpaug.readthedocs.io/en/latest/augmenter/word/word_embs.html">nlpaug</a> library</li>
+                    <li>Went from 5:1 safe-to-spam ratio to a 5:2 ratio (doubled spam instances)</li>
+                    <li>We tested several small models and found MLP to be the best</li>
+                    <li>To assess benefit from augmentation we reran MLP after augmentation</li>
+                    <li>Data augmentation improved MLP F1 accuracy by roughly 5% (right)</li>
+                </ul>
+            </div>
+            
+            <div style="clear: both;"></div>
+            <hr class="section-separator">
+
+            <h3>Models for Final Evaluation</h3>
+            <p>Our testing had MLP (Multi Layer Perceptron) and SVM (Support Vector Machine) performing better than Naive Bayes.</p>
+            <p>However, we believed that we could get better results from Naive Bayes with additional tweaking.</p>
+            <p>Therefore, in our final evaluation we decided to have Naive Bayes and MLP representing classical models vs BERT and roBERTa representing transformer-based models.</p>
+            <h4>Tested models</h4>
+            <ul>
+                <li><a href="https://scikit-learn.org/stable/modules/naive_bayes.html">Naive Bayes</a>: a probabilistic machine learning classifier based on applying Bayes' theorem with strong (naive) independence assumptions between the features</li>
+                <li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html">Multi Layer Perceptron (MLP)</a>: a type of neural network consisting of multiple perceptron layers, typically used for complex pattern recognition and classification</li>
+                <li><a href="https://arxiv.org/abs/1810.04805">BERT (Bidirectional Encoder Representations from Transformers)</a>: a deep learning model that uses bidirectional attention to understand contextual relationships in text</li>
+                <li><a href="https://arxiv.org/abs/1907.11692">roBERTa (Robustly Optimized BERT Pretraining Approach)</a>: an optimized version of BERT, enhancing its pre-training for more accurate natural language processing</li>
+            </ul>
+            
+            <hr class="section-separator">
+
+            <div class="implementation-block">
+                
+                <img src="css/media/confusion_matrix.jpg" alt="performance gain from data augmentation" class="implementation-image-right graph-img">
+                <h3>Metrics&nbsp;for&nbsp;Comparison</h3>
+                <p>While there are many ways to measure a classifier, we identified two metrics to prioritize: Accuracy and False Negatives (FN). We place the largest emphasis on Accuracy and FN because they are of the utmost importance when classifying scams. Since money could be on the line, we need to be accurate when we say a message is Safe (Ham) or Scam (Spam). However, miss-classifying a Safe message as “Scam” (False Positive) is significantly lower risk than miss-classifying a Scam as “Safe” (False Negative).
+                    Therefore, for the model comparison, we will be looking for the highest accuracy, while maintaining the lowest number of False Negatives.</p>
+
+            </div>
+        
+        </section>
+
+        <section class="content" id="results">
+            <h2>Results</h2>
+            <hr class="section-separator">
+            <img src="css/media/result_graphs.jpg" alt="Img of results" class="large-image">
+            <p></p>
+            <p>Provided our stated goal of maximizing Accuracy and minimizing False Negatives (FNs), the analysis of our models revealed a positive correlation between accuracy and reduced FNs. The roBERTa model emerged as the frontrunner, boasting an impressive accuracy of approximately 99.51% and registering the least number of FNs, confirming the hypothesis that higher accuracy tends to yield fewer critical errors in classifications.</p>
+            <p>BERT also demonstrated robust performance, achieving nearly 99.13% accuracy with a comparably low FN rate, underscoring the efficiency of transformer-based architectures in processing complex patterns for reliable Ham versus Spam differentiation. On the other hand, while the Naive Bayes model exhibited a more modest accuracy of 94.16%, it also showed a proportionately higher rate of FNs, highlighting the limitations of more traditional algorithms in intricate classification tasks.</p>
+            <p>It is noteworthy to mention the MLP model, which not only maintained a commendable balance with an accuracy of around 97.38% but also required significantly less computational resources compared to its transformer-based counterparts. This balance between resource efficiency and model performance suggests that the MLP could be a viable option for scenarios where computational efficiency is as much a priority as accuracy and error minimization.</p>
+
+
+        </section>
+
+
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var toggleButton = document.getElementById('toggleSidebar');
+          var sidebar = document.getElementById('sidebar');
+      
+          toggleButton.addEventListener('click', function() {
+            sidebar.classList.toggle('hidden');
+            this.classList.toggle('active'); // Toggle the active class on the button
+          });
+        });
+      </script>
+      
+
+</body>
+</html>
